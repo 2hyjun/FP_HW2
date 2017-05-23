@@ -1,7 +1,12 @@
 #ifndef STUDENTINFO_H
 #define STUDENTINFO_H
 
-#include <string.h>
+
+#include <cstring>
+#include <cstring>
+#include <sstream>
+#include <iostream>
+using namespace std;
 
 class StudentInfo{
 public:
@@ -13,6 +18,8 @@ public:
     StudentInfo(char _name[20], unsigned _studentID, 
         float _score, unsigned _advisorID);
     StudentInfo(const StudentInfo& _std);
+	StudentInfo(string sData);
+	
 };
 
 #endif //  STUDENTINFO_H

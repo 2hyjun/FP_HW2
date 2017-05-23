@@ -2,6 +2,10 @@
 #define DYNAMICHASH_H
 
 #include <iostream>
+#include <math.h>
+#include <fstream>
+#include <cstring>
+#include <sstream>
 #include "StudentInfo.h"
 
 using namespace std;
@@ -34,14 +38,19 @@ private:
 public:
 	Bucket();
 	LinkedHashEntry* GetFirst() const;
+	void SetFirst(LinkedHashEntry* _newfirst);
+	void SetNumEntry(int _numentry);
+	
+	int GetNumEntry() const;
+	int GetBucketSize() const;
 	
 };
 
 //************************************HashMap************************************
 class HashMap {
 private:
-	int mHashPrefix;
-	int mCurrentEntrySize;
+	int mTableSize;
+	int mWholeNumEntry;
 	Bucket** mTable;
 	void Resize();
 	int HashFunc(StudentInfo _student);
@@ -50,8 +59,11 @@ public:
 	StudentInfo GetInfoByKey(int _key);
 	void Insert(StudentInfo _student);
 	~HashMap();
+	void PrintHashTable();
+	void GetDataFromFile();
 };
+//*********************************** Utils ************************************
 
-#define DEFAULT_HASH_PREFIX 7
-#define DEFAULT_BUCKET_SIZE 4
+#define DEFAULT_TABLE_SIZE 2
+#define DEFAULT_BUCKET_SIZE 2
 #endif //  DYNAMICHASH_H

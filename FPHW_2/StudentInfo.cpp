@@ -14,3 +14,35 @@ StudentInfo::StudentInfo(const StudentInfo& _std) {
     mScore = _std.mScore;
     mAdvisorID = _std.mAdvisorID;
 }
+
+StudentInfo::StudentInfo(string sData) {
+	stringstream ss;
+	ss.str(sData);
+	string temp, nameStr;
+	unsigned stdID;
+	double score;
+	unsigned advID;
+	char comma;
+
+	while (ss >> temp) {
+		//cout << name << endl;
+		if (temp[temp.length() - 1] == ',') {
+			nameStr += temp.substr(0, temp.length() - 1);
+			break;
+
+		}
+		else 
+			nameStr += temp + " ";
+	}
+
+	ss >> stdID >> comma
+		>> score >> comma
+		>> advID >> comma;
+	strcpy(mName, nameStr.c_str());
+	mStudentID = stdID;
+	mScore = score;
+	mAdvisorID = advID;
+
+	//cout << mName << " " << mStudentID << " " << mScore << " " << mAdvisorID << endl;
+	
+}
