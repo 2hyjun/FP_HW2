@@ -1,3 +1,6 @@
 ﻿  DynamicHash.cpp
+c:\users\jun\desktop\filestructure\fphw_2\fphw_2\dynamichash.cpp(215): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\jun\desktop\filestructure\fphw_2\fphw_2\dynamichash.cpp(208): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\string.h(136): note: 'strcpy' 선언을 참조하십시오.
   FPHW_2.vcxproj -> C:\Users\Jun\Desktop\FileStructure\FPHW_2\Debug\FPHW_2.exe
   FPHW_2.vcxproj -> C:\Users\Jun\Desktop\FileStructure\FPHW_2\Debug\FPHW_2.pdb (Partial PDB)

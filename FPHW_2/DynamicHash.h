@@ -3,28 +3,32 @@
 
 #include <iostream>
 #include <math.h>
-#include <fstream>
+#include <cstdio>
 #include <cstring>
 #include <sstream>
-#include "StudentInfo.h"
+#include <fstream>
+//#include "StudentInfo.h"
 
 using namespace std;
 
 //************************************LinkedHashEntry************************************
 class LinkedHashEntry {
 private:
-	int mKey;
-	StudentInfo mStudent;
+	unsigned mKey;
+	unsigned mBlockNumber;
+	//StudentInfo mStudent;
 	LinkedHashEntry *mNext;
 public:
-	LinkedHashEntry(int _key, StudentInfo _student);
+	LinkedHashEntry(unsigned _key, unsigned _block_number);
 
-	int GetKey() const;
-	StudentInfo GetStudent() const;
+	unsigned GetKey() const;
+	//StudentInfo GetStudent() const;
+	unsigned GetBlockNumber() const;
 	LinkedHashEntry* GetNext() const;
 
-	void SetKey(int _key);
-	void SetStudent(StudentInfo _student);
+	void SetKey(unsigned _key);
+	//void SetStudent(StudentInfo _student);
+	void SetBlockNumber(unsigned _block_number);
 	void SetNext(LinkedHashEntry* _next);
 };
 
@@ -40,10 +44,9 @@ public:
 	LinkedHashEntry* GetFirst() const;
 	void SetFirst(LinkedHashEntry* _newfirst);
 	void SetNumEntry(int _numentry);
-	
+	bool IsFull() const;
 	int GetNumEntry() const;
 	int GetBucketSize() const;
-	
 };
 
 //************************************HashMap************************************
@@ -51,19 +54,30 @@ class HashMap {
 private:
 	int mTableSize;
 	int mWholeNumEntry;
-	Bucket** mTable;
+	
+	ofstream mFileDB;
+	ofstream mFileHash;
+
 	void Resize();
-	int HashFunc(StudentInfo _student);
+	int HashFunc(unsigned _key);
+	
 public:
+	Bucket** mTable;
 	HashMap();
-	StudentInfo GetInfoByKey(int _key);
-	void Insert(StudentInfo _student);
+	//StudentInfo GetInfoByKey(int _key);
+	void Insert(unsigned _key);
 	~HashMap();
 	void PrintHashTable();
 	void GetDataFromFile();
+	void PrintOutHashFile();
+	void PrintOutDBFile(char _name[20], unsigned _stdID, float _score, unsigned _advID);
+	void Destructor(int _tablenum);
+	void RecursiveDestuctor(LinkedHashEntry* _entry);
 };
 //*********************************** Utils ************************************
-
+void SplitByComma(string _data, string split_by_comma[4]);
 #define DEFAULT_TABLE_SIZE 2
-#define DEFAULT_BUCKET_SIZE 2
+#define DEFAULT_BUCKET_SIZE (int)(4096 / 35)
+							// block size / (20 + 4 + 4 + 4 + 3(3commas))
+#define INPUT_FILE_NAME "data3.csv"
 #endif //  DYNAMICHASH_H

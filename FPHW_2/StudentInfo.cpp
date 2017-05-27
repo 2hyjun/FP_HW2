@@ -14,34 +14,32 @@ StudentInfo::StudentInfo(const StudentInfo& _std) {
     mScore = _std.mScore;
     mAdvisorID = _std.mAdvisorID;
 }
+string* SplitByComma(string sData, string split_by_comma[4]) {
+	stringstream ss(sData);
+	
+	int cnt = 0;
+	ss.str(sData);
+	string temp;
+	while (getline(ss, split_by_comma[cnt], ',')) {
+		//cout << split_by_comma[cnt] << endl;
+		cnt++;
+	}
+	
+	
+	return split_by_comma;
+}
 
 StudentInfo::StudentInfo(string sData) {
 	stringstream ss;
 	ss.str(sData);
-	string temp, nameStr;
-	unsigned stdID;
-	double score;
-	unsigned advID;
-	char comma;
+	
+	string split_by_comma[4];
+	SplitByComma(sData, split_by_comma);
 
-	while (ss >> temp) {
-		//cout << name << endl;
-		if (temp[temp.length() - 1] == ',') {
-			nameStr += temp.substr(0, temp.length() - 1);
-			break;
-
-		}
-		else 
-			nameStr += temp + " ";
-	}
-
-	ss >> stdID >> comma
-		>> score >> comma
-		>> advID >> comma;
-	strcpy(mName, nameStr.c_str());
-	mStudentID = stdID;
-	mScore = score;
-	mAdvisorID = advID;
+	strcpy(mName, split_by_comma[0].c_str());
+	mStudentID = atoi(split_by_comma[1].c_str());
+	mScore = atof(split_by_comma[2].c_str());
+	mAdvisorID = atoi(split_by_comma[3].c_str());
 
 	//cout << mName << " " << mStudentID << " " << mScore << " " << mAdvisorID << endl;
 	
