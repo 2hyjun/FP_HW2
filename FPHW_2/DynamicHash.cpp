@@ -208,7 +208,7 @@ void HashMap::Insert(unsigned _key) {
 	
 	mWholeNumEntry++;
 	mTable[hash]->IncreaseNum(); //mNumEntry++;
-	PrintHashTable();
+	//PrintHashTable();
 }
 void HashMap::HandleOverflow(int _oldtablenum, unsigned _key) {
 	if (mTable[_oldtablenum]->GetLocalDepth() == mGlobalDepth) {
@@ -252,13 +252,13 @@ void HashMap::IncreaseHashTable() {
 }
 void HashMap::Redistribute(int _oldtablenum, Bucket* _bucket1, Bucket* _bucket2) {
 	LinkedHashEntry* entry = mTable[_oldtablenum]->GetFirst();
-
-	int blockNumOfFirst = HashFunc(entry->GetKey());
+	int newLocalDepth = _bucket1->GetLocalDepth();
+	int blockNumOfFirst = entry->GetKey() % (int)pow(2, newLocalDepth);
 
 	while (entry != nullptr) {
 		int key = entry->GetKey();
-		int blockNum = HashFunc(entry->GetKey());
-		if (HashFunc(entry->GetKey()) == blockNumOfFirst)
+		int blockNum = entry->GetKey() % (int)pow(2, newLocalDepth);
+		if ((entry->GetKey() % (int)pow(2, newLocalDepth)) == blockNumOfFirst)
 			_bucket1->Append(new LinkedHashEntry(key, blockNum));
 		else
 			_bucket2->Append(new LinkedHashEntry(key, blockNum));

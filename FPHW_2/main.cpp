@@ -7,8 +7,8 @@ int main() {
 	hashmap.GetDataFromFile();
 
 	hashmap.PrintHashTable();
-	//hashmap.PrintOutHashFile();
-	//hashmap.HandleOverflow(6);
+	hashmap.PrintOutHashFile();
+	
 	cout << "Done!!" << endl;
 	return 0;
 }

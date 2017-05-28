@@ -99,8 +99,8 @@ public:
 //*********************************** Utils ************************************
 void SplitByComma(string _data, string split_by_comma[4]);
 #define DEFAULT_TABLE_SIZE 2
-#define DEFAULT_BUCKET_SIZE 4
-//(int)(4096 / 35)
-							// block size / (20 + 4 + 4 + 4 + 3(3commas))
-#define INPUT_FILE_NAME "data5.inp"
+#define DEFAULT_BUCKET_SIZE (int)(4096 / 35)
+//
+							// block size / (30 + 4 + 4 + 4 + 3(3commas))
+#define INPUT_FILE_NAME "data3.csv"
 #endif //  DYNAMICHASH_H
