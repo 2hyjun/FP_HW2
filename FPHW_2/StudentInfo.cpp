@@ -1,6 +1,6 @@
 #include "StudentInfo.h"
 
-StudentInfo::StudentInfo(char _name[20], unsigned _studentID, 
+StudentInfo::StudentInfo(char _name[30], unsigned _studentID, 
                         float _score, unsigned _advisorID)
         : mStudentID(_studentID)
         , mScore(_score)
@@ -42,5 +42,8 @@ StudentInfo::StudentInfo(string sData) {
 	mAdvisorID = atoi(split_by_comma[3].c_str());
 
 	//cout << mName << " " << mStudentID << " " << mScore << " " << mAdvisorID << endl;
+	
+}
+StudentInfo::~StudentInfo() {
 	
 }

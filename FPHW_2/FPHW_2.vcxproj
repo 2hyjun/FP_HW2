@@ -19,11 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DBHelper.h" />
     <ClInclude Include="DynamicHash.h" />
+    <ClInclude Include="StudentInfo.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DBHelper.cpp" />
     <ClCompile Include="DynamicHash.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="StudentInfo.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

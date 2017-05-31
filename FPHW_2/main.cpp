@@ -1,14 +1,14 @@
-#include "DynamicHash.h"
+#include "DBHelper.h"
+#include <list>
 
 
 int main() {
 
-	HashMap hashmap;
-	hashmap.GetDataFromFile();
+	DBHelper dbhelper;
+	dbhelper.GetDataFromFile();
+	dbhelper.CreateHashFile();
+	dbhelper.CreateDBFile();
 
-	hashmap.PrintHashTable();
-	hashmap.PrintOutHashFile();
-	
 	cout << "Done!!" << endl;
 	return 0;
 }

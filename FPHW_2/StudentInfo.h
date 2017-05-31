@@ -6,19 +6,21 @@
 #include <cstring>
 #include <sstream>
 #include <iostream>
+#define NAMELENGTH 30
 using namespace std;
 
 class StudentInfo{
 public:
-    char mName[20];
+    char mName[NAMELENGTH];
     unsigned mStudentID;
     float mScore;
     unsigned mAdvisorID;
-    
-    StudentInfo(char _name[20], unsigned _studentID, 
+	StudentInfo() {};
+    StudentInfo(char _name[NAMELENGTH], unsigned _studentID,
         float _score, unsigned _advisorID);
     StudentInfo(const StudentInfo& _std);
 	StudentInfo(string sData);
+	~StudentInfo();
 	
 };
 
